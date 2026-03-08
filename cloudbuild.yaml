@@ -1,0 +1,77 @@
+# Google Cloud Build configuration for GestureAI (Cost-Optimized)
+# Builds and deploys both frontend and backend to Cloud Run
+
+steps:
+  # Build and deploy backend
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', '${_REGION}-docker.pkg.dev/$PROJECT_ID/gestureai/backend', './backend']
+    id: 'build-backend'
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', '${_REGION}-docker.pkg.dev/$PROJECT_ID/gestureai/backend']
+    id: 'push-backend'
+    waitFor: ['build-backend']
+
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'gestureai-backend'
+      - '--image=${_REGION}-docker.pkg.dev/$PROJECT_ID/gestureai/backend'
+      - '--region=$_REGION'
+      - '--platform=managed'
+      - '--allow-unauthenticated'
+      - '--set-env-vars=GEMINI_API_KEY=$_GEMINI_API_KEY'
+      - '--memory=512Mi'
+      - '--cpu=1'
+      - '--timeout=300'
+      - '--min-instances=0'
+      - '--max-instances=2'
+      - '--concurrency=80'
+      - '--cpu-throttling'
+    id: 'deploy-backend'
+    waitFor: ['push-backend']
+
+  # Build and deploy frontend
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '--build-arg=NEXT_PUBLIC_API_URL=$_BACKEND_URL'
+      - '-t'
+      - '${_REGION}-docker.pkg.dev/$PROJECT_ID/gestureai/frontend'
+      - './frontend'
+    id: 'build-frontend'
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', '${_REGION}-docker.pkg.dev/$PROJECT_ID/gestureai/frontend']
+    id: 'push-frontend'
+    waitFor: ['build-frontend']
+
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'gestureai-frontend'
+      - '--image=${_REGION}-docker.pkg.dev/$PROJECT_ID/gestureai/frontend'
+      - '--region=$_REGION'
+      - '--platform=managed'
+      - '--allow-unauthenticated'
+      - '--memory=256Mi'
+      - '--cpu=1'
+      - '--min-instances=0'
+      - '--max-instances=2'
+      - '--concurrency=80'
+      - '--cpu-throttling'
+    id: 'deploy-frontend'
+    waitFor: ['push-frontend']
+
+substitutions:
+  _REGION: us-central1
+  _GEMINI_API_KEY: ''
+  _BACKEND_URL: ''
+
+images:
+  - '${_REGION}-docker.pkg.dev/$PROJECT_ID/gestureai/backend'
+  - '${_REGION}-docker.pkg.dev/$PROJECT_ID/gestureai/frontend'

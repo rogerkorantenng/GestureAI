@@ -1,0 +1,15 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: 20
+    commands:
+      - npm --prefix frontend install
+  build:
+    commands:
+      - export NEXT_PUBLIC_API_URL=https://d3s95ezcuv60by.cloudfront.net
+      - npm --prefix frontend run build
+artifacts:
+  files:
+    - '**/*'
+  base-directory: frontend

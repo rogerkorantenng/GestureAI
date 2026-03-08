@@ -1,0 +1,140 @@
+<svg width="1200" height="800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="50%" stop-color="#eff6ff"/>
+      <stop offset="100%" stop-color="#f0f9ff"/>
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="lightBlueGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#dbeafe"/>
+      <stop offset="100%" stop-color="#bfdbfe"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="115%" height="115%">
+      <feDropShadow dx="0" dy="4" stdDeviation="12" flood-color="#3b82f6" flood-opacity="0.15"/>
+    </filter>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Clean White Background -->
+  <rect width="1200" height="800" fill="url(#bgGrad)"/>
+
+  <!-- Subtle Decorative Circles -->
+  <circle cx="0" cy="0" r="350" fill="#dbeafe" opacity="0.3"/>
+  <circle cx="1200" cy="800" r="400" fill="#dbeafe" opacity="0.25"/>
+  <circle cx="1000" cy="100" r="200" fill="#eff6ff" opacity="0.5"/>
+  <circle cx="200" cy="700" r="180" fill="#eff6ff" opacity="0.4"/>
+
+  <!-- Floating Dots Pattern -->
+  <circle cx="150" cy="200" r="4" fill="#3b82f6" opacity="0.15"/>
+  <circle cx="300" cy="120" r="3" fill="#3b82f6" opacity="0.1"/>
+  <circle cx="900" cy="180" r="5" fill="#3b82f6" opacity="0.12"/>
+  <circle cx="1050" cy="250" r="3" fill="#3b82f6" opacity="0.1"/>
+  <circle cx="100" cy="500" r="4" fill="#3b82f6" opacity="0.1"/>
+  <circle cx="1100" cy="550" r="4" fill="#3b82f6" opacity="0.12"/>
+
+  <!-- Left Card - Hand/Sign Icon -->
+  <g filter="url(#shadow)">
+    <rect x="120" y="180" width="300" height="340" rx="24" fill="white" stroke="#e2e8f0" stroke-width="1"/>
+    <!-- Hand Icon -->
+    <g transform="translate(195, 230) scale(1.1)">
+      <path d="M60 160 Q42 142 46 108 L50 75 Q52 57 63 57 Q74 57 76 75 L78 88
+               L82 48 Q84 30 95 30 Q106 30 108 48 L110 88
+               L114 40 Q116 22 127 22 Q138 22 140 40 L142 88
+               L146 48 Q148 30 159 30 Q170 30 172 48 L170 108
+               Q177 92 190 96 Q202 100 198 118 L186 152
+               Q178 178 152 186 L80 186 Q48 178 60 160 Z"
+            fill="url(#blueGrad)"/>
+      <!-- Motion arcs -->
+      <path d="M28 88 Q12 108 28 128" stroke="#93c5fd" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+      <path d="M14 78 Q-6 108 14 138" stroke="#93c5fd" stroke-width="2.5" fill="none" opacity="0.6" stroke-linecap="round"/>
+    </g>
+    <text x="270" y="470" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="700" fill="#1e293b" text-anchor="middle">Sign Language</text>
+    <text x="270" y="496" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#94a3b8" text-anchor="middle">Real-time Recognition</text>
+  </g>
+
+  <!-- Center Connection -->
+  <g>
+    <!-- Animated-looking connection line -->
+    <path d="M440 350 Q600 280 760 350" stroke="#3b82f6" stroke-width="3" fill="none" stroke-dasharray="8 4" opacity="0.4"/>
+    <path d="M440 350 Q600 280 760 350" stroke="#3b82f6" stroke-width="2" fill="none" opacity="0.6"/>
+    <!-- Direction arrows -->
+    <polygon points="590,300 600,290 610,300" fill="#3b82f6" opacity="0.5"/>
+    <!-- Connection dots -->
+    <circle cx="500" cy="325" r="5" fill="#3b82f6" opacity="0.3"/>
+    <circle cx="600" cy="295" r="6" fill="#3b82f6" opacity="0.5"/>
+    <circle cx="700" cy="325" r="5" fill="#3b82f6" opacity="0.3"/>
+
+    <!-- Bidirectional label -->
+    <rect x="548" y="310" width="104" height="28" rx="14" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1"/>
+    <text x="600" y="329" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#3b82f6" text-anchor="middle">LIVE AGENT</text>
+  </g>
+
+  <!-- Right Card - AI/Gemini Icon -->
+  <g filter="url(#shadow)">
+    <rect x="780" y="180" width="300" height="340" rx="24" fill="white" stroke="#e2e8f0" stroke-width="1"/>
+    <!-- AI Chip -->
+    <g transform="translate(860, 225) scale(1.0)">
+      <rect x="30" y="30" width="100" height="100" rx="18" fill="url(#blueGrad)"/>
+
+      <!-- Circuit lines -->
+      <line x1="80" y1="30" x2="80" y2="8" stroke="#93c5fd" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="55" y1="30" x2="55" y2="14" stroke="#93c5fd" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="105" y1="30" x2="105" y2="14" stroke="#93c5fd" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="30" y1="80" x2="8" y2="80" stroke="#93c5fd" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="30" y1="55" x2="14" y2="55" stroke="#93c5fd" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="30" y1="105" x2="14" y2="105" stroke="#93c5fd" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="130" y1="80" x2="152" y2="80" stroke="#93c5fd" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="130" y1="55" x2="146" y2="55" stroke="#93c5fd" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="130" y1="105" x2="146" y2="105" stroke="#93c5fd" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="80" y1="130" x2="80" y2="152" stroke="#93c5fd" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="55" y1="130" x2="55" y2="146" stroke="#93c5fd" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="105" y1="130" x2="105" y2="146" stroke="#93c5fd" stroke-width="2.5" stroke-linecap="round"/>
+
+      <!-- Inner brain icon -->
+      <circle cx="80" cy="80" r="22" fill="none" stroke="white" stroke-width="2.5" opacity="0.9"/>
+      <path d="M65 74 Q80 58 95 74" stroke="white" stroke-width="2.5" fill="none" opacity="0.9" stroke-linecap="round"/>
+      <path d="M65 86 Q80 102 95 86" stroke="white" stroke-width="2.5" fill="none" opacity="0.9" stroke-linecap="round"/>
+
+      <!-- Connector dots -->
+      <circle cx="80" cy="6" r="4" fill="#60a5fa"/>
+      <circle cx="55" cy="12" r="3.5" fill="#60a5fa"/>
+      <circle cx="105" cy="12" r="3.5" fill="#60a5fa"/>
+      <circle cx="6" cy="80" r="4" fill="#60a5fa"/>
+      <circle cx="154" cy="80" r="4" fill="#60a5fa"/>
+      <circle cx="80" cy="154" r="4" fill="#60a5fa"/>
+    </g>
+    <text x="930" y="470" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="700" fill="#1e293b" text-anchor="middle">Gemini AI</text>
+    <text x="930" y="496" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#94a3b8" text-anchor="middle">Audio + Vision Streaming</text>
+  </g>
+
+  <!-- Main Title -->
+  <text x="600" y="615" font-family="system-ui, -apple-system, sans-serif" font-size="82" font-weight="800" fill="#0f172a" text-anchor="middle" letter-spacing="-2">
+    Gesture<tspan fill="#3b82f6">AI</tspan>
+  </text>
+
+  <!-- Tagline -->
+  <text x="600" y="660" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="500" fill="#64748b" text-anchor="middle" letter-spacing="0.5">
+    Real-time Sign Language Live Agent
+  </text>
+
+  <!-- Powered by Badge -->
+  <rect x="462" y="690" width="276" height="42" rx="21" fill="white" stroke="#e2e8f0" stroke-width="1.5"/>
+  <circle cx="492" cy="711" r="10" fill="url(#blueGrad)"/>
+  <text x="496" y="716" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="800" fill="white" text-anchor="middle">G</text>
+  <text x="612" y="717" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="600" fill="#475569" text-anchor="middle">
+    Powered by Gemini Live API
+  </text>
+
+  <!-- Bottom accent -->
+  <rect x="450" y="760" width="300" height="4" rx="2" fill="url(#blueGrad)" opacity="0.4"/>
+</svg>

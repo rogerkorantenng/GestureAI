@@ -1,0 +1,17 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      python: 3.11
+  pre_build:
+    commands:
+      - echo "Current directory:" && pwd
+      - echo "Directory contents:" && ls -la
+      - echo "Backend contents:" && ls -la backend/
+  build:
+    commands:
+      - pip install -r backend/requirements.txt
+artifacts:
+  files:
+    - '**/*'
+  base-directory: backend

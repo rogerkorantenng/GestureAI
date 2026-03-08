@@ -1,0 +1,36 @@
+{
+  "name": "gestureai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Real-time Sign Language Translator powered by Gemini Live API",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
+    "dev:frontend": "npm run dev --workspace=frontend",
+    "dev:backend": "cd backend && ./venv/bin/uvicorn app.main:app --reload --port 8000",
+    "build": "npm run build --workspace=frontend",
+    "lint": "npm run lint --workspace=frontend",
+    "install:all": "npm install && cd backend && pip install -r requirements.txt"
+  },
+  "workspaces": [
+    "frontend"
+  ],
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/gestureai"
+  },
+  "keywords": [
+    "sign-language",
+    "gemini-live",
+    "accessibility",
+    "ai",
+    "translation"
+  ],
+  "author": "",
+  "license": "MIT"
+}
